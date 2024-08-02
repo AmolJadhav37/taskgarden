@@ -307,7 +307,7 @@
             <input type="date" id="date-selector">
             <form id="task-form">
                 <input type="text" id="task-input" placeholder="Plant a new task...">
-                <button type="submit">Grow</button>
+                <button type="submit">ADD Task</button>
             </form>
             <div id="task-list"></div>
             <div id="garden">
@@ -368,8 +368,8 @@
                 taskElement.innerHTML = `
                     <span>${task.description}</span>
                     <div class="task-buttons">
-                        <button onclick="toggleTask(${index})">${task.completed ? 'Replant' : 'Bloom'}</button>
-                        <button onclick="deleteTask(${index})">Prune</button>
+                        <button onclick="toggleTask(${index})">${task.completed ? 'not completed' : 'complete'}</button>
+                        <button onclick="deleteTask(${index})">delete</button>
                     </div>
                 `;
                 taskList.appendChild(taskElement);
