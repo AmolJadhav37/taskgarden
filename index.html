@@ -228,6 +228,70 @@
             75% { transform: translate(50px, 50px) rotate(-10deg); }
             100% { transform: translate(0, 0) rotate(0deg); }
         }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            #task-form {
+                flex-direction: column;
+            }
+
+            #task-input {
+                width: 100%;
+                margin-bottom: 10px;
+                border-radius: 20px;
+            }
+
+            #task-form button {
+                width: 100%;
+                border-radius: 20px;
+            }
+
+            #garden {
+                height: 300px;
+            }
+
+            .task {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .task-buttons {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .task-buttons button {
+                flex: 1;
+                margin-right: 5px;
+            }
+
+            .task-buttons button:last-child {
+                margin-right: 0;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                margin: 0.25rem 0;
+                width: 100%;
+            }
+
+            #date-selector {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -237,7 +301,7 @@
         <div id="streak"></div>
         <div class="tab-buttons">
             <button class="tab-button active" onclick="showTab('today')">Today's Tasks</button>
-            <button class="tab-button" onclick="showTab('past')">Task History</button>
+            <button class="tab-button" onclick="showTab('past')">Tasks History</button>
         </div>
         <div id="today-tab" class="tab-content active">
             <input type="date" id="date-selector">
@@ -303,7 +367,7 @@
                 }
                 taskElement.innerHTML = `
                     <span>${task.description}</span>
-                    <div>
+                    <div class="task-buttons">
                         <button onclick="toggleTask(${index})">${task.completed ? 'Replant' : 'Bloom'}</button>
                         <button onclick="deleteTask(${index})">Prune</button>
                     </div>
