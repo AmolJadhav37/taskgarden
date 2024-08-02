@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Garden</title>
+    <title>Enchanted Task Garden</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -296,12 +296,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Jadooo Task Garden</h1>
+        <h1>Enchanted Task Garden</h1>
         <div id="motivation-quote"></div>
         <div id="streak"></div>
         <div class="tab-buttons">
-            <button class="tab-button active" onclick="showTab('today')">Today's Tasks</button>
-            <button class="tab-button" onclick="showTab('past')">Tasks History</button>
+            <button class="tab-button active" onclick="showTab('today')">Today's Blooms</button>
+            <button class="tab-button" onclick="showTab('past')">Garden History</button>
         </div>
         <div id="today-tab" class="tab-content active">
             <input type="date" id="date-selector">
@@ -382,19 +382,27 @@
 
         function renderPastTasks() {
             pastTasks.innerHTML = '';
-            Object.keys(tasks).sort((a, b) => new Date(b) - new Date(a)).forEach(date => {
+            const sortedDates = Object.keys(tasks).sort((a, b) => new Date(b) - new Date(a));
+            
+            sortedDates.forEach(date => {
                 if (date !== currentDate) {
                     const dateElement = document.createElement('div');
                     dateElement.innerHTML = `<h3>${date}</h3>`;
+                    const taskList = document.createElement('ul');
+                    taskList.style.listStyleType = 'none';
+                    taskList.style.padding = '0';
+                    
                     tasks[date].forEach(task => {
-                        const taskElement = document.createElement('div');
-                        taskElement.classList.add('task');
+                        const taskItem = document.createElement('li');
+                        taskItem.classList.add('task');
                         if (task.completed) {
-                            taskElement.classList.add('completed');
+                            taskItem.classList.add('completed');
                         }
-                        taskElement.innerHTML = `<span>${task.description}</span>`;
-                        dateElement.appendChild(taskElement);
+                        taskItem.innerHTML = `<span>${task.description}</span>`;
+                        taskList.appendChild(taskItem);
                     });
+                    
+                    dateElement.appendChild(taskList);
                     pastTasks.appendChild(dateElement);
                 }
             });
@@ -483,6 +491,5 @@
 
         renderTasks();
     </script>
-    //lastt deployment needed
 </body>
 </html>
