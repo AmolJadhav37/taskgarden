@@ -10,12 +10,6 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
-// Conditional CORS setup
-if (process.env.NODE_ENV === 'development') {
-  app.use(cors({ origin: process.env.CORS_ORIGIN }));
-} else {
-  app.use(cors({ origin: process.env.VERCEL_URL }));
-}
 
 app.use(cors());
 
