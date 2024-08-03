@@ -1,4 +1,6 @@
-const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '/api';
+const API_URL = '/api';
+
+console.log(API_URL);
 
 // ... (rest of your frontend code)
 let token = localStorage.getItem('token');
