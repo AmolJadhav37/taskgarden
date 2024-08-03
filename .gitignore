@@ -37,3 +37,4 @@ out/
 
 # Python (if applicable)
 __pycache__/
+.vercel
